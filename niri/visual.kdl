@@ -1,0 +1,63 @@
+// =========================
+// VISUAL SETTINGS
+// =========================
+
+prefer-no-csd // prefer server-side decorations (disable client-side ones)
+
+cursor {
+    xcursor-theme "Future-dark-cursors" // cursor theme
+    xcursor-size 24 // cursor size
+    hide-when-typing // hide cursor while typing
+}
+
+layout {
+    background-color "transparent"
+    gaps 5 // spacing between windows
+
+    focus-ring {
+        width 3 // disable focus highlight ring
+    }
+
+    border {
+        width 3 // window border thickness
+    }
+
+    shadow {
+        off
+    } // must be initialized to allow external config overrides
+}
+
+// =========================
+// UI / OVERLAY SETTINGS
+// =========================
+
+hotkey-overlay {
+    skip-at-startup // do not show hotkey help on startup
+}
+// Set the regular wallpaper on the backdrop.
+window-rule {
+    geometry-corner-radius 16
+    opacity 0.9
+    background-effect {
+        blur true
+    }
+    clip-to-geometry true
+}
+layer-rule {
+  match namespace="^noctalia-wallpaper*"
+  place-within-backdrop true
+}
+
+// Optionally, disable the workspace shadows in the overview.
+overview {
+  workspace-shadow {
+    off
+  }
+}
+
+// =========================
+// ANIMATIONS CONFIG
+// =========================
+
+animations {
+}

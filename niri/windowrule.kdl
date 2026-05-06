@@ -1,0 +1,6 @@
+window-rule {
+    geometry-corner-radius 8 // rounded window corners
+    clip-to-geometry true // clip content to rounded corners
+    tiled-state true // enforce tiling by default
+    draw-border-with-background false // don't blend border into background
+}

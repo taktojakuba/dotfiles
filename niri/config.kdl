@@ -1,196 +1,90 @@
-prefer-no-csd
-include "./noctalia.kdl"
-input {
-    keyboard {
-        // Enable numlock on startup, omitting this setting disables it.
-        numlock
+// =========================
+// EXTERNAL CONFIG INCLUDE
+// =========================
+
+include "./autostart.kdl"
+include "./windowrule.kdl"
+include "./keybinds.kdl"
+include "./visual.kdl"
+
+// =========================
+// WORKSPACES CONFIGURATION
+// =========================
+
+    workspace "a" {
+        open-on-output "HDMI-A-1"
     }
 
-
-    focus-follows-mouse max-scroll-amount="0%"
-}
-
-
-
-
-//visual
-cursor {
-    xcursor-theme "Future-dark-cursors"
-    xcursor-size 24
-    hide-when-typing
-}
-layout {
-    // other values
-
-    focus-ring{
-      off
+    workspace "b" {
+        open-on-output "HDMI-A-1"
     }
 
-    background-color "transparent"
-    border {
-        width 3
-    }
-  shadow {} // border and shadow need to at least be initialized inorder to recieve the include values
-}
-window-rule {
-  geometry-corner-radius 20
-  clip-to-geometry true
-  tiled-state true
-  draw-border-with-background false
-}
-window-rule {
-    match app-id=""
-    open-maximized false
-}
-hotkey-overlay {
-    skip-at-startup
-}
-animations {
-    workspace-switch {
-       off
+    workspace "c" {
+        open-on-output "HDMI-A-1"
     }
 
-    window-open {
-        duration-ms 5
-        curve "linear"
+    workspace "d" {
+        open-on-output "HDMI-A-1"
     }
 
-    window-close {
-        duration-ms 5
-        curve "linear"
+    workspace "e" {
+        open-on-output "HDMI-A-1"
     }
 
-    horizontal-view-movement {
-        spring damping-ratio=1.0 stiffness=1500 epsilon=0.0001
+    workspace "f" {
+        open-on-output "HDMI-A-1"
     }
 
-    window-movement {
-        spring damping-ratio=1.0 stiffness=1500 epsilon=0.0001
+    workspace "g" {
+        open-on-output "HDMI-A-1"
     }
 
-    window-resize {
+    workspace "h" {
+        open-on-output "HDMI-A-1"
+    }
+
+    workspace "i" {
+        open-on-output "HDMI-A-1"
+    }
+
+    workspace "j" {
+        open-on-output "eDP-1"
+    }
+
+// =========================
+// OUTPUT / MONITOR SETTINGS
+// =========================
+
+output "eDP-1" {
+    mode "1920x1080@144"
+    hot-corners {
         off
     }
-
-    config-notification-open-close {
+}
+output "HDMI-A-1" {
+    mode "1920x1080@119.879"
+    scale 1
+    hot-corners {
         off
-    }
-
-    exit-confirmation-open-close {
-        off
-    }
-
-    screenshot-ui-open {
-        off
-    } 
-
-    overview-open-close {
-        off
-    }
-
-    recent-windows-close {
-          off       
     }
 }
+// =========================
+// SCREENSHOT SETTINGS
+// =========================
 
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png" 
+// defines screenshot save location and filename format
 
+// =========================
+// DEBUG SETTINGS
+// =========================
 
-
-//screenshot-path
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
-
-
-
-
-
-binds {
-    // application spawning
-    // spawn = direct exec, spawn-sh = shell (allows arguments, pipes, etc.)
-    Mod+BracketLeft { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
-    Mod+T { spawn "foot"; }
-    Mod+E { spawn "nautilus"; }
-    Mod+B { spawn "firefox";}
-
-    // application launcher (noctalia)
-    Mod+A { spawn-sh "/home/kuba/.config/rofi/launcher/launcher.sh"; }
-    Mod+D { spawn-sh "/home/kuba/.config/rofi/applets/bin/apps.sh"; }
-    Mod+Y {spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle";}
-
-    // session menu (logout, reboot, shutdown)
-    Mod+Escape { spawn-sh "/home/kuba/.config/rofi/powermenu/powermenu.sh"; }
-    Mod+L {spawn-sh "	qs -c noctalia-shell ipc call lockScreen lock"; }
-    // audio controls (work even when session is locked)
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
-    XF86Search {spawn-sh "qs -c noctalia-shell ipc call powerProfile cycle";}
-    // overview / exposé mode
-    Mod+Tab repeat=false { toggle-overview; }
-
-    // close focused window
-    Mod+Q repeat=false { close-window; }
-
-    // focus navigation within workspace
-    Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
-    Mod+Right { focus-column-right; }
-
-    // move windows inside workspace
-    Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+Down  { move-window-down; }
-    Mod+Ctrl+Up    { move-window-up; }
-    Mod+Ctrl+Right { move-column-right; }
-
-    // switch focus between monitors
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
-
-    // move windows between monitors
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-
-    // workspace switching
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-
-    // move windows to workspaces
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
-
-    // window state operations
-    Mod+W        { maximize-column; }
-    Mod+Shift+W  { fullscreen-window; }
-    Mod+F        { toggle-window-floating; }
-
-    // screenshots
-    Print      { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print  { screenshot-window; }
-}
 debug {
-  // Allows notification actions and window activation from Noctalia.
-  honor-xdg-activation-with-invalid-serial
+    honor-xdg-activation-with-invalid-serial 
+    // allows external apps (like Noctalia) to activate windows
 }
 
+
+
+include "./noctalia.kdl"
 
