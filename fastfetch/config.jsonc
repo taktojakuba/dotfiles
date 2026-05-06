@@ -1,0 +1,55 @@
+{
+    "logo": {
+        "source": "/home/kuba/.config/fastfetch/anime/*.csv",
+        "type": "auto",
+        "height": 10,
+        "padding": {
+          "right": 4,
+          "left": 4,
+          "top": 2
+    }
+
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+	"break",
+	"break",
+	{
+            "type": "title",
+            "keyWidth": 0
+        },
+        "break",
+        {
+            "type": "os",
+            "key": " ",
+            "keyColor": "white",
+        },
+        {
+            "type": "kernel",
+            "key": " ",
+            "keyColor": "white",
+        },
+        {
+            "type": "shell",
+            "key": " ",
+            "keyColor": "white",
+        },
+        {
+            "type": "terminal",
+            "key": " ",
+            "keyColor": "white",
+        },
+        {
+            "type": "wm",
+            "key": " ",
+            "keyColor": "white",
+        },
+        {
+            "type": "uptime",
+            "key": " ",
+            "keyColor": "white",
+        },
+    ]
+}
