@@ -1,0 +1,37 @@
+{
+    "layer": "top",
+    "position": "top",
+    "output": "HDMI-A-1",
+    "height": 34,
+    "margin": 0,
+    "spacing": 5,
+    "reload_style_on_change": true,
+    "modules-left": ["custom/btop","custom/wifi","custom/wallpaper","power-profiles-daemon"],
+    "modules-center": [],
+    "modules-right": ["clock","tray"],
+    "custom/btop": {
+        "format": "BTOP",
+        "on-click": "foot -e btop"
+    },
+    "clock": {
+        "format": "{:%H:%M}"
+    },
+    "custom/wifi": {
+        "format": "  ",
+        "on-click": "foot -e wlctl"
+    },
+    "custom/wallpaper": {
+        "format": "  ",
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": false,
+        "format-icons": {
+            "default": "  ",
+            "performance": "  ",
+            "balanced": "  ",
+            "power-saver": "  "
+        }
+    }
+}

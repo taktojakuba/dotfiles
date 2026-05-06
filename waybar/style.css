@@ -1,0 +1,25 @@
+* {
+    font-family: "Adwaita Mono";
+    font-size: 13px;
+}
+
+window#waybar {
+    background: #1f1e1a;
+    color: #ffffff;
+}
+
+#clock {
+    padding: 0 10px;
+}
+.modules-left { 
+    border-radius: 16px;
+
+}
+.modules-right {
+    border-radius: 16px;
+
+}
+.modules-center {
+    border-radius: 16px;
+  
+}
