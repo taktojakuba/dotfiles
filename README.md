@@ -10,17 +10,6 @@
 </pre>
 <h1>dotfiles that I use daily<h1>
 <h3>niri with noctalia-shell</h3>
-<h2>summary:</h2>
-<ol>
-  <li>noctalia-shell fallout color sheme</li>
-  <li>kew with noctalia  user template</li>
-  <li>cava with noctalia  user template(no bg)</li>
-  <li>rofi with noctalia  user template</li>
-  <li>btop</li>
-  <li>fastfetch with multiple ascii arts</li>
-  <li>foot</li>
-  <li>niri</li>
-</ol>
 <h2>preview:</h2>
 <table>
   <tr>
