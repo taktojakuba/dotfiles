@@ -1,0 +1,1 @@
+sed -i '8c\include "./rfull.kdl"' ~/.config/niri/config.kdl 

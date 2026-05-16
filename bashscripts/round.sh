@@ -1,0 +1,1 @@
+sed -i '8c\include "./round.kdl"' ~/.config/niri/config.kdl 
