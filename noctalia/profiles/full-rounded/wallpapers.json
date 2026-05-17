@@ -1,0 +1,14 @@
+{
+  "screens": [
+    {
+      "name": "HDMI-A-1",
+      "light": "",
+      "dark": "/home/kuba/Pictures/Wallpapers/wallhaven_k8kgz1.jpg"
+    },
+    {
+      "name": "eDP-1",
+      "light": "",
+      "dark": "/home/kuba/Pictures/Wallpapers/wallhaven_k8kgz1.jpg"
+    }
+  ]
+}
