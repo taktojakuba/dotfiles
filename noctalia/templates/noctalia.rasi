@@ -1,9 +1,0 @@
-* {
-    background:     #00000099;
-    background-alt: #00000066;
-    foreground:     {{colors.on_surface.default.hex}};
-    selected:       {{colors.primary.default.hex}};
-    active:         {{colors.secondary.default.hex}};
-    urgent:         {{colors.tertiary.default.hex}};
-}
-
