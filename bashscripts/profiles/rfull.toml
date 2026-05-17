@@ -1,0 +1,51 @@
+[shell]
+ui_scale = 1.0
+[shell.animation]
+enabled = true
+speed   = 4.0 
+[shell.shadow]
+blur     = 0
+[shell.panel]
+background_blur       = false
+transparency_mode     = "solid"
+attach_launcher       = false
+attach_clipboard      = false
+attach_control_center = false  
+attach_wallpaper      = false 
+attach_session        = false
+open_near_click_control_center = true
+open_near_click_launcher       = false
+open_near_click_clipboard      = false
+open_near_click_wallpaper      = false
+open_near_click_session        = false
+[shell.screen_corners]
+enabled = false 
+size    = 32
+[osd]
+position = "top_right"   # top_right | top_left | top_center | bottom_right | bottom_left | bottom_center | center_right | center_left
+orientation = "horizontal" # horizontal | vertical
+lock_keys = true
+
+[bar.main]
+start = [ "tray", "power_profiles", "media" ]
+center = [ "workspaces" ]
+end = [ "clock", "control-center" ]
+thickness          = 25          # bar cross-axis size in pixels (height for horizontal, width for vertical)
+background_opacity = 1.0         # 0.0 (transparent) to 1.0 (opaque)
+shadow             = false       # cast the global [shell.shadow]
+contact_shadow     = false       # dark gradient between an attached panel and the bar (depth at the seam)
+attach_panels      = true        # allow panels to attach to this bar (false = always float)
+radius             = 12          # global corner radius fallback
+margin_ends        = 5           # inset from each end of the bar along its main axis
+margin_edge        = 0           # distance from the nearest screen edge (positive values float the bar)
+padding            = 8           # main-axis padding from bar edges to start/end widget sections
+widget_spacing     = 6           # gap between widgets within a section
+scale              = 1.0         # content scale multiplier for icons and text
+# Default capsule style for all widgets on this bar (see Widget Capsule section)
+capsule            = false
+capsule_fill       = "surface_variant"
+capsule_radius     = 8.0            # omit for automatic pill radius
+capsule_opacity    = 1.0
+[bar.main.monitor.eDP-1]
+match              = "eDP-1"
+enabled            = false
