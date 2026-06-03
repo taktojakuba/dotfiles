@@ -1,1 +1,1 @@
-spawn-sh-at-startup "qs -c noctalia-shell" // start Noctalia shell on startup
+spawn-at-startup "noctalia" // start Noctalia shell on startup

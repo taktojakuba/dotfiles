@@ -12,14 +12,14 @@ cursor {
 
 layout {
     background-color "transparent"
-    gaps 5 // spacing between windows
+    gaps 2 // spacing between windows
 
     focus-ring {
-        width 3 // disable focus highlight ring
+        width 1 // disable focus highlight ring
     }
 
     border {
-        width 3 // window border thickness
+        width 1 // window border thickness
     }
 
     shadow {
@@ -36,10 +36,10 @@ hotkey-overlay {
 }
 // Set the regular wallpaper on the backdrop.
 window-rule {
-    geometry-corner-radius 16
-    opacity 0.9
+    geometry-corner-radius 0
+    opacity 1.0
     background-effect {
-        blur true
+        blur false
     }
     clip-to-geometry true
 }
@@ -58,6 +58,3 @@ overview {
 // =========================
 // ANIMATIONS CONFIG
 // =========================
-
-animations {
-}

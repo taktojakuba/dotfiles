@@ -1,0 +1,92 @@
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+output HDMI-A-1 mode 1920x1080@143.999hz pos 1920 0
+output eDP-1 mode 1920x1080@144.000hz pos 0 0 
+output * allow_tearing yes
+output * max_render_time off
+
+exec noctalia
+
+set $mod Mod4
+bindsym $mod+Shift+r reload
+bindsym $mod+a exec "noctalia msg panel-toggle launcher"
+bindsym $mod+y exec "noctalia msg panel-toggle wallpaper"
+bindsym $mod+escape exec "noctalia msg panel-toggle session"
+
+bindsym $mod+b exec firefox
+bindsym $mod+t exec foot
+bindsym $mod+e exec nautilus
+bindsym $mod+v exec code
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+bracketleft splith
+bindsym $mod+bracketright splitv
+
+bindsym $mod+w fullscreen
+bindsym $mod+f floating toggle
+bindsym $mod+q kill
+
+bindsym XF86AudioRaiseVolume exec "noctalia msg volume-up"
+bindsym XF86AudioLowerVolume exec "noctalia msg volume-down"
+bindsym XF86AudioMute exec "noctalia msg volume-mute"
+bindsym XF86Search exec "qs -c noctalia-shell ipc call powerProfile cycle" # no v5 equivalent yet
+bindsym XF86AudioPlay exec "noctalia msg media toggle"
+
+floating_modifier $mod normal
+
+default_border pixel 2
+gaps inner 5
+gaps outer 3
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+workspace $ws1 output HDMI-A-1
+workspace $ws2 output HDMI-A-1
+workspace $ws3 output HDMI-A-1
+workspace $ws4 output HDMI-A-1
+workspace $ws5 output HDMI-A-1
+workspace $ws6 output HDMI-A-1
+workspace $ws7 output HDMI-A-1
+workspace $ws8 output HDMI-A-1
+workspace $ws9 output HDMI-A-1
+workspace $ws10 output eDP-1
+
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+include ~/.config/sway/noctalia

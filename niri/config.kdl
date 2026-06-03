@@ -3,9 +3,12 @@
 // =========================
 
 include "./autostart.kdl"
-include "./windowrule.kdl"
 include "./keybinds.kdl"
 include "./visual.kdl"
+
+environment {
+    DISPLAY ":0"
+}
 
 // =========================
 // WORKSPACES CONFIGURATION

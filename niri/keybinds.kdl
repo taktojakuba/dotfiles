@@ -1,79 +1,61 @@
 // =========================
 // INPUT SETTINGS
 // =========================
-
 input {
     focus-follows-mouse max-scroll-amount="0%" // focus windows on hover, disable scroll switching
 }
-
-
 // =========================
 // KEYBINDS
 // =========================
-
 binds {
-
     // --- Window management ---
     Mod+BracketLeft { consume-or-expel-window-left; } // move window left in layout
     Mod+BracketRight { consume-or-expel-window-right; } // move window right
-
     // --- Application launching ---
     Mod+T { spawn "foot"; } // terminal
-    Mod+E { spawn "nemo"; } // file manager
+    Mod+E { spawn "nautilus"; } // file manager
     Mod+B { spawn "firefox"; } // browser
     Mod+v { spawn "code"; } // VS Code
-    Mod+Y {spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
-
+    Mod+Y { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     // --- Launcher (Noctalia) ---
-    Mod+A { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-
+    Mod+A { spawn-sh "noctalia msg panel-toggle launcher"; }
     // --- Session controls ---
-    Mod+Escape { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-
+    Mod+Escape { spawn-sh "noctalia msg panel-toggle session"; }
     // --- Audio controls (work even when locked) ---
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-    XF86AudioMute allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
-
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
     // --- Media & system controls ---
-    XF86Search { spawn-sh "qs -c noctalia-shell ipc call powerProfile cycle"; }
-    XF86AudioNext { spawn-sh "qs -c noctalia-shell ipc call media next"; }
-    XF86AudioPlay { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    XF86AudioPrev { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
-    XF86MonBrightnessUp { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
-    XF86MonBrightnessDown { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
-
+    XF86Search { spawn-sh "qs -c noctalia-shell ipc call powerProfile cycle"; } // no v5 equivalent yet
+    XF86AudioNext { spawn-sh "noctalia msg media next"; }
+    XF86AudioPlay { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioPrev { spawn-sh "noctalia msg media previous"; }
+    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
     // --- Overview ---
     Mod+Tab repeat=false { toggle-overview; } // toggle workspace overview
-
     // --- Window closing ---
     Mod+Q repeat=false { close-window; }
-
     // --- Focus navigation ---
     Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; } 
+    Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    
-
     // --- Move windows ---
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Down  { move-window-down; }
     Mod+Shift+Up    { move-window-up; }
     Mod+Shift+Right { move-column-right; }
-    
-    // --- Focus ---
+    // --- Focus (vim keys) ---
     Mod+H { focus-column-left; }
     Mod+J { focus-window-down; }
     Mod+K { focus-window-up; }
     Mod+L { focus-column-right; }
-
-    // --- Move windows ---
+    // --- Move windows (vim keys) ---
     Mod+Shift+H { move-column-left; }
     Mod+Shift+J { move-window-down; }
     Mod+Shift+K { move-window-up; }
     Mod+Shift+L { move-column-right; }
-
     // --- Workspace switching (1–10) ---
     Mod+1 { focus-workspace "a"; }
     Mod+2 { focus-workspace "b"; }
@@ -85,8 +67,7 @@ binds {
     Mod+8 { focus-workspace "h"; }
     Mod+9 { focus-workspace "i"; }
     Mod+0 { focus-workspace "j"; }
-
-    // move windows to workspaces
+    // --- Move windows to workspaces ---
     Mod+Shift+1 { move-column-to-workspace "a"; }
     Mod+Shift+2 { move-column-to-workspace "b"; }
     Mod+Shift+3 { move-column-to-workspace "c"; }
@@ -97,12 +78,10 @@ binds {
     Mod+Shift+8 { move-column-to-workspace "h"; }
     Mod+Shift+9 { move-column-to-workspace "i"; }
     Mod+Shift+0 { move-column-to-workspace "j"; }
-
     // --- Window states ---
     Mod+W { maximize-column; } // maximize current column
     Mod+Shift+W { fullscreen-window; } // fullscreen window
     Mod+F { toggle-window-floating; } // toggle floating mode
-
     // --- Screenshots ---
     Print { screenshot; } // full screenshot
     Shift+Print { screenshot-screen; } // current screen

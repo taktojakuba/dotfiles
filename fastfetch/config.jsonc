@@ -23,33 +23,33 @@
         "break",
         {
             "type": "os",
-            "key": " ",
-            "keyColor": "white",
+            "key": "OS",
+            "keyColor": "white"
         },
         {
             "type": "kernel",
-            "key": " ",
-            "keyColor": "white",
+            "key": "Kernel",
+            "keyColor": "white"
         },
         {
             "type": "shell",
-            "key": " ",
-            "keyColor": "white",
+            "key": "Shell",
+            "keyColor": "white"
         },
         {
             "type": "terminal",
-            "key": " ",
-            "keyColor": "white",
+            "key": "Terminal",
+            "keyColor": "white"
         },
         {
             "type": "wm",
-            "key": " ",
-            "keyColor": "white",
+            "key": "WM",
+            "keyColor": "white"
         },
         {
             "type": "uptime",
-            "key": " ",
-            "keyColor": "white",
+            "key": "Uptime",
+            "keyColor": "white"
         },
     ]
 }
