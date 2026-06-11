@@ -1,0 +1,10 @@
+[mgr]
+show_hidden = true
+sort_by = "mtime"
+sort_reverse = true
+sort_dir_frist = true
+[opener]
+edit = [
+	{ run = "nvim %s", block = true, for = "unix" },
+]
+
