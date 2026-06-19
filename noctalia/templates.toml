@@ -1,0 +1,9 @@
+[theme.templates.user.wallpaper]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/wallpaper.sh"
+output_path = "$XDG_CONFIG_HOME/bashscripts/wallpaper.sh"
+post_hook   = "~/.config/bashscripts/wallpaper.sh"
+
+[theme.templates.user.mangowm]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/mango.conf"
+output_path = "$XDG_CONFIG_HOME/mango/noctalia.conf"
+post_hook   = "mmsg dispatch reload_config"
