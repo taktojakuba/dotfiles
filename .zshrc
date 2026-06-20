@@ -14,6 +14,12 @@ alias pacs="sudo pacman -S --needed --noconfirm"
 alias pacu="sudo pacman -Syu --noconfirm"
 alias pacr="sudo pacman -Rns --noconfirm"
 alias y="yazi"
+alias ga="git add ."
+alias gi="git init"
+alias gc="git commit -m"
+alias gp="git push"
+alias gs="git status"
+alias gu="git pull"
 cs() { cd "$@" && ls; }
 export PATH=$PATH:/home/kuba/.spicetify
 export PATH=$PATH:~/.spicetify
