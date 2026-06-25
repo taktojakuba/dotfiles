@@ -7,3 +7,11 @@ post_hook   = "~/.config/bashscripts/wallpaper.sh"
 input_path  = "$XDG_CONFIG_HOME/noctalia/templates/mango.conf"
 output_path = "$XDG_CONFIG_HOME/mango/noctalia.conf"
 post_hook   = "mmsg dispatch reload_config"
+
+[theme.templates.user.nvim]
+input_path = "~/.config/noctalia/templates/matugen-template.lua"
+output_path = "~/.config/nvim/lua/matugen.lua"
+post_hook = 'pkill -SIGUSR1 nvim'
+[theme.templates.user.tmux]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/tmux.conf"
+output_path = "$XDG_CONFIG_HOME/tmux/theme.conf"
