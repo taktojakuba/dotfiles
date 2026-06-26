@@ -1,0 +1,14 @@
+return {
+    "tpope/vim-fugitive",
+
+    cmd = {
+        "G",
+        "Git",
+        "Gdiffsplit",
+        "Gvdiffsplit",
+        "Gread",
+        "Gwrite",
+        "Gclog",
+        "Gedit",
+    },
+}

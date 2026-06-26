@@ -4,7 +4,7 @@ return {
     opts = {
         display = {
             theme = 'classic',   -- 'default', 'atom', 'catppuccin', 'minecraft', 'void', 'classic'
-            flavor = 'dark',   -- 'dark', 'light', 'accent'
+            flavor = 'accent',   -- 'dark', 'light', 'accent'
         }
     }
 }
