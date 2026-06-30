@@ -1,0 +1,10 @@
+id           = "taktojakuba/app"
+name         = "app-laucher"
+version      = "1.0.0"
+min_noctalia = "5.0.0"
+author       = "taktojakuba"
+
+[[launcher_provider]]
+id     = "app laucher"
+entry  = "launch.luau"
+prefix = "/op"

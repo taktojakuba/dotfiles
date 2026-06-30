@@ -1,0 +1,10 @@
+id           = "taktojakuba/web"
+name         = "web-search"
+version      = "1.0.0"
+min_noctalia = "5.0.0"
+author       = "taktojakuba"
+
+[[launcher_provider]]
+id     = "web search"
+entry  = "search.luau"
+prefix = "/se"

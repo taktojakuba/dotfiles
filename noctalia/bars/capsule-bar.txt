@@ -1,0 +1,92 @@
+[widget.bongocat]
+audio_spectrum = true
+input_device = ""
+script = "scripts/bongocat.lua"
+tappy_mode = true
+type = "scripted"
+use_mpris_filter = true
+
+[widget.bracket_left]
+color = "secondary"
+glyph = ""
+label = "["
+type = "custom_button"
+
+[widget.bracket_right]
+color = "secondary"
+glyph = ""
+label = "]"
+type = "custom_button"
+
+[widget.control-center]
+glyph = "align-box-left-middle"
+
+[widget.cpu]
+display = "text"
+
+[widget.media]
+art_size = 15.0
+title_scroll = "always"
+
+[widget.network]
+show_label = false
+
+[widget.ram]
+display = "text"
+show_label = false
+stat = "ram_pct"
+
+[widget.scripted_2]
+type = "scripted"
+
+[widget.spacer_1]
+capsule_border = "primary"
+capsule_fill = "primary"
+capsule_foreground = "primary"
+color = "primary"
+length = 10
+type = "spacer"
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spliter]
+color = "tertiary"
+glyph = ""
+label = "/"
+type = "custom_button"
+
+[widget.taskbar]
+inactive_opacity = 0.5
+only_active_workspace = true
+show_active_indicator = false
+
+[widget.vertical_separator]
+color = "tertiary"
+glyph = ""
+label = "|"
+type = "custom_button"
+
+[widget.workspaces]
+empty_color = "tertiary"
+hide_when_empty = true
+labels_only_when_occupied = true
+minimal = false
+
+[bar.capsule]
+    border_width = 1.5
+    center = [ "workspaces" ]
+    enabled = true
+    end = [ "clock", "vertical_separator", "date", "vertical_separator", "control-center" ]
+    margin_ends = 500
+    padding = 10
+    radius = 21
+    shadow = false
+    start = [ "launcher", "network", "bluetooth", "vertical_separator", "tray", "vertical_separator", "media" ]
+    thickness = 30
+
+
+[bar.capsule.monitor.eDP-1]
+enabled = false
+[bar.capsule.monitor.HDMI-A-1]
+enabled = true

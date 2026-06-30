@@ -7,4 +7,9 @@ sort_dir_frist = true
 edit = [
 	{ run = "nvim %s", block = true, for = "unix" },
 ]
-
+open = [
+	{ run = "xdg-open %s1", desc = "Open" },
+]
+play = [
+	{ run = "mpv %s", orphan = true, for = "unix" },
+]

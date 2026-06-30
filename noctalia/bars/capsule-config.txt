@@ -1,17 +1,17 @@
 [notification]
 layer = "overlay"
 monitors = [ "HDMI-A-1" ]
-position = "top_center"
+position = "bottom_right"
 
 [osd]
 monitors = [ "HDMI-A-1" ]
-position = "top_center"
+position = "bottom_center"
 
 
 [shell]
-corner_radius_scale = 0.0
+corner_radius_scale = 1.0
     [shell.animation]
-    speed = 4.0
+    speed = 2.0
 
     [shell.panel]
     borders = false

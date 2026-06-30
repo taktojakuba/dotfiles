@@ -1,0 +1,181 @@
+
+# widget configuration
+[widget.active_window]
+icon_size = 14.0
+max_length = 260.0
+min_length = 80.0
+title_scroll = "none"
+type = "active_window"
+
+[widget.bongocat]
+audio_spectrum = true
+input_device = ""
+script = "scripts/bongocat.lua"
+tappy_mode = true
+type = "scripted"
+use_mpris_filter = true
+
+[widget.bracket_left]
+color = "secondary"
+glyph = ""
+label = "["
+type = "custom_button"
+
+[widget.bracket_right]
+color = "secondary"
+glyph = ""
+label = "]"
+type = "custom_button"
+
+[widget.control-center]
+glyph = "navigation-filled"
+type = "control-center"
+
+[widget.cpu]
+display = "text"
+stat = "cpu_usage"
+type = "sysmon"
+
+[widget.date]
+format = "{:%a %d %b}"
+type = "clock"
+
+[widget.input_volume]
+device = "input"
+type = "volume"
+
+[widget.keyboard_layout]
+cycle_command = ""
+hide_when_single_layout = false
+type = "keyboard_layout"
+
+[widget.lock_keys]
+display = "short"
+hide_when_off = false
+show_caps_lock = true
+show_num_lock = true
+show_scroll_lock = false
+type = "lock_keys"
+
+[widget.media]
+art_size = 15.0
+max_length = 220.0
+min_length = 80.0
+title_scroll = "always"
+type = "media"
+
+[widget.network]
+show_label = false
+type = "network"
+
+[widget.network_rx]
+stat = "net_rx"
+type = "sysmon"
+
+[widget.network_tx]
+stat = "net_tx"
+type = "sysmon"
+
+[widget.output_volume]
+device = "output"
+type = "volume"
+
+[widget.ram]
+display = "text"
+show_label = false
+stat = "ram_pct"
+type = "sysmon"
+
+[widget.spacer]
+type = "spacer"
+
+[widget.spacer_1]
+capsule_border = "primary"
+capsule_fill = "primary"
+capsule_foreground = "primary"
+color = "primary"
+length = 10
+type = "spacer"
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spliter]
+color = "tertiary"
+glyph = ""
+label = "/"
+type = "custom_button"
+
+[widget.temp]
+stat = "cpu_temp"
+type = "sysmon"
+
+[widget.vertical_separator]
+color = "tertiary"
+glyph = ""
+label = "|"
+type = "custom_button"
+
+[widget.workspaces]
+anchor = false
+display = "name"
+hide_when_empty = false
+labels_only_when_occupied = false
+minimal = true
+type = "workspaces"
+
+# bar config
+  [bar.box]
+    auto_hide = false
+    background_opacity = 1.0
+    border = "outline"
+    border_width = 0.0
+    capsule = false
+    capsule_border = "secondary"
+    capsule_fill = "surface_variant"
+    capsule_group = []
+    capsule_opacity = 0.0
+    capsule_padding = 0.0
+    color = "primary"
+    contact_shadow = false
+    enabled = true
+    font_weight = 500
+    layer = "top"
+    marginedge = 10
+    margin_ends = 0
+    padding = 15
+    panel_overlap = 1
+    position = "top"
+    radius = 0
+    radius_bottom_left = 0
+    radius_bottom_right = 0
+    radius_top_left = 0
+    radius_top_right = 0
+    reserve_space = true
+    scale = 1.0
+    shadow = false
+    thickness = 15
+    widget_spacing = 10
+    # bar widgets
+    start = [ "workspaces", "vertical_separator", "bracket_left","control-center","vertical_separator", "tray", "bracket_right", "media" ]
+    center = [ "bracket_left", "clock", "date", "bracket_right" ]
+    end = [
+        "bracket_left",
+        "power_profile",
+        "spliter",
+        "bluetooth",
+        "spliter",
+        "network",
+        "spliter",
+        "volume",
+        "spliter",
+        "ram",
+        "spliter",
+        "cpu",
+        "bracket_right"
+    ]
+
+[bar.box.monitor.eDP-1]
+enabled = true
+[bar.box.monitor.HDMI-A-1]
+enabled = true
