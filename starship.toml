@@ -1,0 +1,34 @@
+add_newline = false
+
+format = "$username$hostname:$directory$git_branch$git_status $character"
+
+[username]
+show_always = true
+style_user = "white bold"
+style_root = "red bold"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+style = "white bold"
+format = "[@$hostname]($style)"
+
+[directory]
+style = "blue bold"
+truncation_length = 3
+truncate_to_repo = false
+format = "[$path]($style)"
+
+[git_branch]
+symbol = ""
+style = "magenta bold"
+format = " [$branch]($style)"
+
+[git_status]
+style = "yellow"
+format = " [$all_status$ahead_behind]($style)"
+
+[character]
+success_symbol = "[>](green bold)"
+error_symbol = "[>](red bold)"
+vicmd_symbol = "[<](yellow bold)"

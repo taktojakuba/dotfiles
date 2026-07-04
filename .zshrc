@@ -1,9 +1,10 @@
 zstyle :compinstall filename '/home/kuba/.zshrc'
 autoload -Uz compinit
-compinit
-fastfetch
+compinit -C
+alias kf="~/.config/bashscripts/kudfetch.sh"
 alias vim="nvim"
 alias zed="zeditor"
+alias tmux="tmux attach || tmux new"
 alias yays="yay -S --needed --noconfirm"
 alias yayu="yay -Syu --noconfirm"
 alias yayr="yay -Rns --noconfirm"
@@ -19,10 +20,12 @@ alias gs="git status"
 alias gu="git pull"
 alias mkdir="mkdir -p"
 alias ls="ls -ah --color=always --group-directories-first"
+alias switch="~/.config/noctalia/switch.sh"
 cs() { cd "$@" && ls; }
 alias cd="cs"
 export PATH=$PATH:/home/kuba/.spicetify
 export PATH=$PATH:~/.spicetify
 eval "$(starship init zsh)"
 setopt CORRECT
+paste ~/.config/fastfetch/anime/boku2.csv <(kf)
 
