@@ -7,10 +7,20 @@ position = "top_center"
 monitors = [ "HDMI-A-1" ]
 position = "top_center"
 
-
+[desktop_widgets]
+enabled = false
 [shell]
+color = "primary"
 corner_radius_scale = 0.0
+font_family = "Adwaita Mono"
+input_borders = false
+password_style = "random"
+popup_borders = false
+popup_shadows = false
+button_borders = false
+
     [shell.animation]
+    enabled = false
     speed = 4.0
 
     [shell.panel]
