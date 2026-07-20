@@ -1,0 +1,18 @@
+id         = "kuba/system-stats"
+name       = "system-stats"
+version    = "1.0.0"
+plugin_api = 3
+author     = "kuba"
+
+[[widget]]
+id    = "volume"
+entry = "volume.luau"
+[[widget]]
+id    = "powerprofile"
+entry = "powerprofile.luau"
+[[widget]]
+id    = "battery"
+entry = "battery.luau"
+[[widget]]
+id    = "wifi"
+entry = "wifi.luau"

@@ -1,0 +1,31 @@
+[notification]
+layer = "overlay"
+monitors = [ "HDMI-A-1" ]
+position = "bottom_right"
+
+[osd]
+monitors = [ "HDMI-A-1" ]
+position = "bottom_center"
+
+
+[shell]
+corner_radius_scale = 1.0
+    [shell.animation]
+    speed = 2.0
+
+    [shell.panel]
+    borders = false
+    clipboard_placement = "attached"
+    launcher_categories = false
+    launcher_compact = true
+    launcher_placement = "attached"
+    launcher_show_icons = false
+    open_near_click_clipboard = true
+    open_near_click_control_center = true
+    open_near_click_launcher = true
+    open_near_click_session = true
+    open_near_click_wallpaper = true
+    shadow = false
+
+    [shell.screen_corners]
+    size = 1
