@@ -16,3 +16,9 @@ entry = "battery.luau"
 [[widget]]
 id    = "wifi"
 entry = "wifi.luau"
+[[widget]]
+id    = "cpu"
+entry = "cpu.luau"
+[[widget]]
+id    = "ram"
+entry = "ram.luau"

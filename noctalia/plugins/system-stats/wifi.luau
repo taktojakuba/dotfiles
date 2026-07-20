@@ -1,5 +1,5 @@
 function update()
-  noctalia.setUpdateInterval(100)
+  noctalia.setUpdateInterval(10000)
 
   noctalia.runAsync(
     noctalia.expandPath("~/.config/noctalia/plugins/system-stats/wifi.sh"),
