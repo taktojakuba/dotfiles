@@ -11,4 +11,3 @@ cp -r "$dir/yazi" "$out"
 cp -r "$dir/bashscripts" "$out"
 cp "$HOME/.zshrc" "$out"
 cp "$dir/starship.toml" "$out"
-
