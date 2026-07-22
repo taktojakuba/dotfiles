@@ -22,3 +22,6 @@ entry = "cpu.luau"
 [[widget]]
 id    = "ram"
 entry = "ram.luau"
+[[widget]]
+id    = "weather"
+entry = "weather.luau"

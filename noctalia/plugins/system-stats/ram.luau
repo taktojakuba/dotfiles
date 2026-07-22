@@ -6,7 +6,7 @@ function update()
     function(result)
       if result.exitCode == 0 then
         local ram = result.stdout:gsub("%s+$", "")
-        barWidget.setText("ram: " .. ram .. "%")
+        barWidget.setText("ram: " .. ram)
       else
         barWidget.setText("ram: ERR")
       end
