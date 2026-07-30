@@ -1,126 +1,6 @@
-[widget.active_window]
-icon_size = 14.0
-max_length = 260.0
-min_length = 80.0
-title_scroll = "none"
-type = "active_window"
-
-[widget.battery]
-device = "/org/freedesktop/UPower/devices/battery_BAT1"
-display_mode = "graphic"
-show_label = false
-
-[widget.bongocat]
-audio_spectrum = true
-input_device = ""
-script = "scripts/bongocat.lua"
-tappy_mode = true
-type = "scripted"
-use_mpris_filter = true
-
-[widget.bracket_left]
-color = "secondary"
-glyph = ""
-label = "["
-type = "custom_button"
-
-[widget.bracket_right]
-color = "secondary"
-glyph = ""
-label = "]"
-type = "custom_button"
-
 [widget.control-center]
 glyph = "navigation-filled"
 type = "control-center"
-
-[widget.cpu]
-display = "text"
-stat = "cpu_usage"
-type = "sysmon"
-
-[widget.date]
-format = "{:%a %d %b}"
-type = "clock"
-
-[widget.input_volume]
-device = "input"
-type = "volume"
-
-[widget.keyboard_layout]
-cycle_command = ""
-hide_when_single_layout = false
-type = "keyboard_layout"
-
-[widget.lock_keys]
-display = "short"
-hide_when_off = false
-show_caps_lock = true
-show_num_lock = true
-show_scroll_lock = false
-type = "lock_keys"
-
-[widget.media]
-art_size = 15.0
-hide_album_art = true
-hide_artist = true
-hide_when_no_media = true
-max_length = 220.0
-min_length = 80.0
-title_scroll = "none"
-type = "media"
-
-[widget.network]
-show_label = false
-type = "network"
-
-[widget.network_rx]
-stat = "net_rx"
-type = "sysmon"
-
-[widget.network_tx]
-stat = "net_tx"
-type = "sysmon"
-
-[widget.output_volume]
-device = "output"
-type = "volume"
-
-[widget.ram]
-display = "text"
-show_label = false
-stat = "ram_pct"
-type = "sysmon"
-
-[widget.spacer]
-type = "spacer"
-
-[widget.spacer_1]
-capsule_border = "primary"
-capsule_fill = "primary"
-capsule_foreground = "primary"
-color = "primary"
-length = 10
-type = "spacer"
-
-[widget.spacer_2]
-type = "spacer"
-
-[widget.spliter]
-color = "tertiary"
-glyph = ""
-label = "/"
-type = "custom_button"
-
-[widget.temp]
-stat = "cpu_temp"
-type = "sysmon"
-
-[widget.vertical_separator]
-color = "tertiary"
-glyph = ""
-label = "|"
-type = "custom_button"
 
 [widget.workspaces]
 anchor = false
@@ -129,6 +9,8 @@ hide_when_empty = false
 labels_only_when_occupied = false
 style = "minimal"
 type = "workspaces"
+
+
 # bar config
 [bar.box]
 auto_hide = false
@@ -164,33 +46,36 @@ shadow = false
 thickness = 15
 widget_spacing = 10
 color = "primary"
+center = [ "brackets_5", "clock", "separator_4", "visualizer", "separator_5", "date", "brackets_6" ]
+end = [
+    "brackets_7",
+    "powerprofile_2",
+    "slash_separator_2",
+    "battery_3",
+    "slash_separator_3",
+    "wifi_2",
+    "slash_separator_4",
+    "volume_2",
+    "slash_separator_6",
+    "ram_3",
+    "slash_separator_5",
+    "cpu_3",
+    "brackets_8"
+]
 start = [
     "workspaces",
-    "vertical_separator",
-    "bracket_left",
+    "separator",
+    "brackets",
     "control-center",
-    "vertical_separator",
+    "separator_2",
     "tray",
-    "bracket_right",
-    "media"
+    "brackets_2",
+    "media",
+    "separator_3",
+    "brackets_3",
+    "weather_3",
+    "brackets_4"
 ]
-center = [ "bracket_left", "clock", "date", "bracket_right" ]
-end = [
-    "bracket_left",
-    "power_profile",
-    "spliter",
-    "battery",
-    "spliter",
-    "network",
-    "spliter",
-    "volume",
-    "spliter",
-    "ram",
-    "spliter",
-    "cpu",
-    "bracket_right"
-]
-    
 [bar.box.monitor.eDP-1]
 enabled = true
 [bar.box.monitor.HDMI-A-1]
