@@ -9,17 +9,19 @@ function onQuery(text)
     })
     return
   end
+
   launcher.setResults(text, {
     {
       id = "search",
-      title = "searching web for " .. text
+      title = "Search the web for \"" .. text .. "\"",
+      glyph = "search",
     }
   })
 end
 
 function onActivate(id)
   if id == "search" then
-    local url = "https://duckduckgo.com/?q=" .. query:gsub(" ", "+")
-      noctalia.runAsync("xdg-open " .. url)
-    end
+    local url = "https://duckduckgo.com/?q=" .. noctalia.string.urlEncode(query)
+    noctalia.runAsync("xdg-open " .. url)
+  end
 end

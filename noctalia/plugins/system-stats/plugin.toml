@@ -22,6 +22,18 @@ entry = "cpu.luau"
 [[widget]]
 id    = "ram"
 entry = "ram.luau"
+
 [[widget]]
-id    = "weather"
+id = "weather"
 entry = "weather.luau"
+[[widget]]
+id    = "viz"
+entry = "visualizer.luau"
+
+  [[widget.setting]]
+  key       = "width"
+  type      = "int"
+  label_key = "settings.width.label"
+  default   = 30
+  min       = 10
+  max       = 500

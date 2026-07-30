@@ -1,11 +1,15 @@
-id         = "kuba/websearch"
-name       = "websearch"
-version    = "1.0.1"
-plugin_api = 3
-author     = "taktojakuba"
+id          = "kuba/websearch"
+name        = "Web Search"
+version     = "1.0.1"
+plugin_api  = 3
+author      = "taktojakuba"
+license     = "MIT"
+icon        = "search"
+description = "Search the web from the launcher with the `se` prefix."
 
 [[launcher_provider]]
 id     = "websearch"
 entry  = "search.luau"
 prefix = "se"
+glyph  = "search"
 include_in_global_search = true

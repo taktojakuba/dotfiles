@@ -1,2 +1,2 @@
 #!/bin/bash
-noctalia msg wallpaper-set color:#161311
+noctalia msg wallpaper-set color:#151129
