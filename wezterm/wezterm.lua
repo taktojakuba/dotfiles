@@ -2,8 +2,8 @@ local wezterm = require 'wezterm'
 local mux = wezterm.mux
 local act = wezterm.action
 
-wezterm.on('gui-startup', function()
-  local tab, pane, window = mux.spawn_window {}
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
   window:gui_window():set_inner_size(1200, 800)
 end)
 
