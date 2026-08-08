@@ -1,10 +1,9 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.number = true
-vim.opt.relativenumber = false
 vim.g.mapleader = " "
 
 -- lazy nvim plugin manager
@@ -18,7 +17,12 @@ local plugins = {
   { "RRethy/nvim-base16", priority = 1000 },
   { "nvim-telescope/telescope.nvim", version = "0.2.2", dependencies = { "nvim-lua/plenary.nvim" } },
   { "nvim-telescope/telescope-ui-select.nvim" },
-  { "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
+  { "nvim-telescope/telescope-project.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = { ensure_installed = { "lua", "javascript" } },
+  },
   { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
   { "mason-org/mason.nvim" },
@@ -90,7 +94,7 @@ local plugins = {
           center = {
             { icon = " ", desc = "New File", group = "Label", key = "n", action = "ene | startinsert" },
             { icon = " ", desc = "Recent Files", group = "Label", key = "r", action = "Telescope oldfiles" },
-            { icon = " ", desc = "Open Project", group = "Label", key = "p", action = "Telescope projects" },
+            { icon = " ", desc = "Open Project", group = "Label", key = "p", action = "Telescope project" },
           },
           footer = function()
             local stats = require("lazy").stats()
@@ -134,9 +138,17 @@ local plugins = {
       performance_mode = false,
       ignored_filetypes = {},
       ignored_buftypes = {},
+      mappings = { "<C-u>", "<C-d>", "<C-y>", "<C-e>", "zt", "zz", "zb", "G", "gg" },
     },
   },
   { "vyfor/cord.nvim", opts = { display = { theme = "classic", flavor = "accent" } } },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "mason-org/mason.nvim" },
+    opts = {
+      ensure_installed = { "stylua", "prettier", "ruff", "clang-format" },
+    },
+  },
 }
 
 require("lazy").setup(plugins)
@@ -145,9 +157,7 @@ require("matugen").setup()
 local builtin = require("telescope.builtin")
 
 require("telescope").load_extension("ui-select")
-
-require("nvim-treesitter").setup({ install_dir = vim.fn.stdpath("data") .. "/site" })
-require("nvim-treesitter").install({ "lua", "javascript" })
+require("telescope").load_extension("project")
 
 require("nvim-tree").setup()
 
@@ -158,39 +168,37 @@ require("lualine").setup({
 -- lsp config
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+vim.lsp.config("*", {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr, silent = true }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "F", vim.lsp.buf.format, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+  end,
+})
+
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = { "lua_ls" },
-  handlers = {
-    function(server_name)
-      require("lspconfig")[server_name].setup({
-        capabilities = capabilities,
-        on_attach = function(client, bufnr)
-          local opts = { buffer = bufnr, silent = true }
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-          vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-          vim.keymap.set("n", "F", vim.lsp.buf.format, opts)
-          vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-          vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-          vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-        end,
-      })
-    end,
-  },
 })
 
 -- key bindings
-vim.keymap.set("n", "<C-f>", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<C-g>", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<C-f>", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<C-g>", builtin.find_files, { desc = "Telescope find files" })
 vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<cr>", { noremap = true })
 vim.keymap.set("n", "<C-a>", "ggVG", { noremap = true })
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>cd", function() vim.fn.setcwd(vim.fn.expand("%:p:h")) end, { desc = "cd to current file's dir" })
 vim.keymap.set("n", "<C-b>", "<cmd>NvimTreeFocus<cr>", { noremap = true })
 
 -- neoscroll keybinds
