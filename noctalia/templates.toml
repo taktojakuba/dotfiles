@@ -15,7 +15,3 @@ post_hook = 'pkill -SIGUSR1 nvim'
 [theme.templates.user.tmux]
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/tmux.conf"
 output_path = "$XDG_CONFIG_HOME/tmux/theme.conf"
-
-[theme.templates.user.fluxer]
-input_path  = "$XDG_CONFIG_HOME/noctalia/templates/fluxer.css"
-output_path = "$XDG_CONFIG_HOME/fluxer/theme.css"

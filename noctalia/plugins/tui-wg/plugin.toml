@@ -1,0 +1,75 @@
+id         = "taktojakuba/tui-wg"
+name       = "tui-wg"
+version    = "0.5.0"
+plugin_api = 3
+author     = "taktojakuba"
+
+[[widget]]
+id    = "volume"
+entry = "volume.luau"
+[[widget]]
+id    = "powerprofile"
+entry = "powerprofile.luau"
+[[widget]]
+id    = "battery"
+entry = "battery.luau"
+[[widget]]
+id    = "wifi"
+entry = "wifi.luau"
+
+  [[widget.setting]]
+  key       = "wifi_interface"
+  type      = "string"
+  label_key = "settings.wifi_interface.label"
+  default   = "wlan0"
+
+[[widget]]
+id    = "cpu"
+entry = "cpu.luau"
+[[widget]]
+id    = "ram"
+entry = "ram.luau"
+
+[[widget]]
+id = "weather"
+entry = "weather.luau"
+
+  [[widget.setting]]
+  key       = "location"
+  type      = "string"
+  label_key = "settings.location.label"
+  default   = "Warsaw"
+
+[[widget]]
+id    = "separator"
+entry = "separator.luau"
+
+[[widget]]
+id    = "slash-separator"
+entry = "slash-separator.luau"
+
+[[widget]]
+id    = "brackets"
+entry = "brackets.luau"
+
+  [[widget.setting]]
+  key       = "side"
+  type      = "select"
+  label_key = "settings.side.label"
+  default   = "left"
+  options   = [
+    { value = "left",  label_key = "settings.side.left" },
+    { value = "right", label_key = "settings.side.right" },
+  ]
+
+[[widget]]
+id    = "apptray"
+entry = "apptray.luau"
+
+[[widget]]
+id = "matrix"
+entry = "matrix.luau"
+
+[[widget]]
+id = "matrix-volume"
+entry = "volume-matrix.luau"
