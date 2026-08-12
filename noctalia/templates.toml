@@ -10,7 +10,7 @@ post_hook   = "mmsg dispatch reload_config"
 
 [theme.templates.user.nvim]
 input_path = "~/.config/noctalia/templates/matugen-template.lua"
-output_path = "~/.config/nvim/lua/matugen.lua"
+output_path = "~/.config/nvim/matugen.lua"
 post_hook = 'pkill -SIGUSR1 nvim'
 [theme.templates.user.tmux]
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/tmux.conf"
