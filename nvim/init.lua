@@ -3,6 +3,7 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.clipboard:append("unnamedplus")
+vim.opt.cmdheight = 0
 vim.opt.number = true
 vim.g.mapleader = " "
 
@@ -149,10 +150,54 @@ local plugins = {
       ensure_installed = { "stylua", "prettier", "ruff", "clang-format" },
     },
   },
+  {"m4xshen/autoclose.nvim"},
 }
 
 require("lazy").setup(plugins)
 require("matugen").setup()
+
+require("autoclose").setup()
+
+-- autoclose HTML/XML tags like <div> -> <div></div>
+local html_filetypes = {
+  html = true, htm = true, xhtml = true, xml = true,
+  jsx = true, tsx = true, vue = true, svelte = true,
+  mdx = true, markdown = true, eruby = true, ejs = true,
+  php = true, liquid = true, astro = true,
+}
+
+local html_void_elements = {
+  area = true, base = true, br = true, col = true, embed = true,
+  hr = true, img = true, input = true, link = true, meta = true,
+  param = true, source = true, track = true, wbr = true,
+}
+
+local function html_auto_close()
+  if not html_filetypes[vim.bo.filetype] then
+    return ">"
+  end
+
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+
+  if line:sub(col + 1, col + 1) == ">" then
+    return "<C-G>U<Right>"
+  end
+
+  local before = line:sub(1, col)
+  local open = before:find("<[^<>]*$")
+  if not open then
+    return ">"
+  end
+
+  local tagname = before:sub(open + 1):match("^([a-zA-Z][%w%-]*)")
+  if tagname and not html_void_elements[tagname:lower()] then
+    return "></" .. tagname .. ">"
+  end
+  return ">"
+end
+
+vim.keymap.set("i", ">", html_auto_close, { noremap = true, expr = true, desc = "autoclose html tag" })
 
 local builtin = require("telescope.builtin")
 
