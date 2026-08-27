@@ -1,7 +1,7 @@
-[theme.templates.user.wallpaper]
-input_path  = "$XDG_CONFIG_HOME/noctalia/templates/wallpaper.sh"
-output_path = "$XDG_CONFIG_HOME/bashscripts/wallpaper.sh"
-post_hook   = "~/.config/bashscripts/wallpaper.sh"
+#[theme.templates.user.wallpaper]
+#input_path  = "$XDG_CONFIG_HOME/noctalia/templates/wallpaper.sh"
+#output_path = "$XDG_CONFIG_HOME/bashscripts/wallpaper.sh"
+#post_hook   = "~/.config/bashscripts/wallpaper.sh"
 
 [theme.templates.user.mangowm]
 input_path  = "$XDG_CONFIG_HOME/noctalia/templates/mango.conf"
@@ -15,3 +15,8 @@ post_hook = 'pkill -SIGUSR1 nvim'
 [theme.templates.user.tmux]
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/tmux.conf"
 output_path = "$XDG_CONFIG_HOME/tmux/theme.conf"
+
+[theme.templates.user.dwl]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/dwl-colors.c"
+output_path = "~/dwl/colors.c"
+post_hook   = "make -C ~/dwl dwl"
