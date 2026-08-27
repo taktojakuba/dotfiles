@@ -1,0 +1,87 @@
+position = "top"
+anchor_to_edges = true
+height = 20
+layer = "top"
+
+[margin]
+top = 0
+bottom = 0
+left = 0
+right = 0
+
+[[start]]
+type = "label"
+class = "sep"
+label = "["
+
+[[start]]
+type = "label"
+class = "apps"
+label = "{{2000:pgrep -x steam >/dev/null && echo Steam}}"
+on_click_left = "sh -c 'steam >/dev/null 2>&1 &'"
+
+[[start]]
+type = "label"
+class = "apps"
+label = "{{2000:pgrep -x vesktop >/dev/null && echo Vesktop}}"
+on_click_left = "sh -c 'vesktop >/dev/null 2>&1 &'"
+
+[[start]]
+type = "label"
+class = "apps"
+label = "{{2000:pgrep -x spotify >/dev/null && echo Spotify}}"
+on_click_left = "sh -c 'spotify >/dev/null 2>&1 &'"
+
+[[start]]
+type = "label"
+class = "sep"
+label = "|"
+
+[[start]]
+type = "label"
+class = "weather"
+label = "[ weather: {{1800000:curl -s wttr.in/?format=%C}} ]"
+
+[[start]]
+type = "music"
+class = "music"
+player_type = "mpris"
+format = "{title}"
+show_status_icon = false
+
+[[start]]
+type = "label"
+class = "sep"
+label = "]"
+
+[start.truncate]
+mode = "end"
+max_length = 28
+
+[[center]]
+type = "label"
+class = "bracket"
+label = "["
+
+[[center]]
+type = "clock"
+format = "%H:%M"
+
+[[center]]
+type = "label"
+class = "sep"
+label = "|"
+
+[[center]]
+type = "clock"
+format = "%a %d %b"
+
+[[center]]
+type = "label"
+class = "bracket"
+label = "]"
+
+[[end]]
+type = "label"
+class = "stats"
+label = "[ prof: {{5000:powerprofilesctl get}} / batt: {{30000:grep . /sys/class/power_supply/BAT*/capacity 2>/dev/null | head -1 | cut -d: -f2}}% / wifi: {{10000:cat /sys/class/net/wlan0/operstate | tr a-z A-Z}} / vol: {{2000:wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf \"%.0f\", $2*100}'}}% / ram: {{5000:free | awk '/Mem/{printf \"%.0f\", $3/$2*100}'}}% / cpu: {{2000:top -bn1 | grep 'Cpu(s)' | awk '{printf \"%.0f\", 100-$8}'}}% ]"

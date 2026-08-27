@@ -1,0 +1,133 @@
+/* ~/.config/ironbar/style.css
+ *
+ * Tokyo Night palette: https://github.com/enkia/tokyo-night-vscode-theme
+ * Selectors reference: https://github.com/JakeStanger/ironbar/wiki/Styling-guide
+ */
+
+@define-color nord0  #1a1b26; /* base bg */
+@define-color nord1  #16161e; /* elevated bg / popups */
+@define-color nord2  #292e42; /* borders */
+@define-color nord3  #565f89; /* muted text / separators (comment) */
+@define-color nord4  #c0caf5; /* body text (fg) */
+@define-color nord5  #a9b1d6; /* fg_dark */
+@define-color nord6  #c0caf5; /* bright text */
+@define-color nord7  #73daca; /* green1 */
+@define-color nord8  #7dcfff; /* accent (focused ws, highlights) - cyan */
+@define-color nord9  #7aa2f7; /* primary bar text - blue */
+@define-color nord10 #3d59a1; /* blue0 */
+@define-color nord11 #f7768e; /* red / urgent */
+@define-color nord12 #ff9e64; /* orange */
+@define-color nord13 #e0af68; /* yellow */
+@define-color nord14 #9ece6a; /* green */
+@define-color nord15 #bb9af7; /* purple / magenta */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", monospace;
+  font-size: 13px;
+  min-height: 0;
+}
+
+.background {
+  background-color: transparent;
+}
+
+#bar {
+  background-color: @nord0;
+  color: @nord9;
+  border-radius: 6px;
+  border: 1px solid @nord1;
+  padding: 0 10px;
+}
+
+#bar #start,
+#bar #center,
+#bar #end {
+  padding: 0;
+}
+
+/* generic widget spacing reset so bracket groups sit tight together */
+.widget-container {
+  padding: 0 2px;
+}
+
+label {
+  color: @nord9;
+}
+
+/* dim "|" separators and "[" "]" brackets */
+.sep label,
+.sep,
+.bracket label,
+.bracket {
+  color: @nord9;
+}
+
+/* ---------------- apps / launcher label ---------------- */
+
+.apps {
+  color: @nord9;
+  padding: 0 5px;
+  background: none;
+  border: none;
+  transition: 0.1s;
+}
+
+.apps:hover {
+  background-color: alpha(@nord2, 0.6);
+}
+
+/* ---------------- focused window title ---------------- */
+
+.focused {
+  color: @nord9;
+  padding: 0 4px;
+}
+
+.focused .label {
+  color: @nord9;
+}
+
+/* ---------------- weather ---------------- */
+
+.weather {
+  color: @nord9;
+  padding: 0 4px;
+}
+
+/* ---------------- now playing ---------------- */
+
+.music {
+  background-color: @nord0;
+  padding: 0 4px;
+}
+
+/* ---------------- clock ---------------- */
+
+.clock {
+  color: @nord9;
+  background: none;
+  border: none;
+  padding: 0 4px;
+}
+
+.popup-clock {
+  background-color: @nord1;
+  color: @nord9;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* ---------------- tray ---------------- */
+
+.tray {
+}
+
+.tray .item {
+}
+
+/* ---------------- right-hand stats block ---------------- */
+
+.stats {
+  color: @nord9;
+  padding: 0 4px;
+}

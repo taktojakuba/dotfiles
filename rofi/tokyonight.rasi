@@ -12,7 +12,7 @@ window {
   text-color: @fg;
   border: 1px;
   border-color: @border;
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 12px;
 }
 
@@ -24,7 +24,7 @@ mainbox {
 inputbar {
   background-color: @bg-alt;
   text-color: @fg;
-  border-radius: 6px;
+  border-radius: 0px;
   padding: 8px 10px;
   spacing: 8px;
 }
@@ -43,7 +43,7 @@ listview {
 element {
   background-color: transparent;
   text-color: @fg;
-  border-radius: 6px;
+  border-radius: 0px;
   padding: 8px 10px;
 }
 
@@ -60,6 +60,6 @@ element-text, element-icon {
 message {
   background-color: @bg-alt;
   text-color: @fg;
-  border-radius: 6px;
+  border-radius: 0px;
   padding: 8px;
 }
