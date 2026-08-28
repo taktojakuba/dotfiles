@@ -34,9 +34,8 @@
 #bar {
   background-color: @nord0;
   color: @nord9;
-  border-radius: 6px;
+  border-radius: 0px;
   border: 1px solid @nord1;
-  padding: 0 10px;
 }
 
 #bar #start,
@@ -129,5 +128,5 @@ label {
 
 .stats {
   color: @nord9;
-  padding: 0 4px;
+  padding: 0 0px;
 }

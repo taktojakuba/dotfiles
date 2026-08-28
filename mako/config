@@ -1,5 +1,5 @@
 font=mono 12
-background-color=#24283b
+background-color=#1a1b26
 text-color=#c0caf5
 border-color=#586691
 border-size=1
@@ -23,17 +23,17 @@ markup=1
 group-by=app-name
 
 [urgency=low]
-background-color=#24283b
+background-color=#1a1b26
 text-color=#c0caf5
 border-color=#586691
 
 [urgency=normal]
-background-color=#24283b
+background-color=#1a1b26
 text-color=#c0caf5
 border-color=#586691
 
 [urgency=high]
 default-timeout=0
-background-color=#f7768e
+background-color=#1a1b26
 text-color=#16161e
 border-color=#f7768e
