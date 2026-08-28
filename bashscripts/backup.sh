@@ -12,7 +12,7 @@ in=(
   "$dir/cava"
   "$HOME/.zshrc"
 )
-out="$HOME/Documents/dotfiles/"
+out="$HOME/dotfiles/"
 
 for item in "${in[@]}"; do cp -rv "$item" "$out"; done
 
