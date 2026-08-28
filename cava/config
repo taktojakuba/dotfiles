@@ -5,10 +5,10 @@
 [general]
 
 # Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0
-; mode = normal
+; mode = scientific
 
 # Accepts only non-negative values.
-framerate = 144
+framerate = 60
 
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
@@ -18,19 +18,19 @@ framerate = 144
 
 # Manual sensitivity in %. If autosens is enabled, this will only be the initial value.
 # 200 means double height. Accepts only non-negative values.
-sensitivity = 100
+sensitivity = 150
 
 # The number of bars (0-512). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
 ; bars = 0
-; bar_width = 2
-; bar_spacing = 1
+; bar_width = 1
+; bar_spacing = 0
 # bar_height is only used for output in "noritake" format
 ; bar_height = 32
 
 # For SDL width and space between bars is in pixels, defaults are:
-; bar_width = 20
-; bar_spacing = 5
+; bar_width = 1
+; bar_spacing = 0
 
 # sdl_glsl have these default values, they are only used to calculate max number of bars.
 ; bar_width = 1
@@ -228,7 +228,7 @@ synchronized_sync = 1
 show_idle_bar_heads = 0
 
 # show waveform instead of frequency spectrum, 1 = on, 0 = off
-waveform = 0
+waveform = a
 
 [color]
 theme = "noctalia"
@@ -297,7 +297,7 @@ theme = "noctalia"
 # Set gravity percentage for "drop off". Higher values means bars will drop faster.
 # Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".
 # DEPRECATED as of 0.8.0, use noise_reduction instead
-; gravity = 100
+; gravity = 200
 
 
 # In bar height, bars that would have been lower that this will not be drawn.
@@ -307,7 +307,7 @@ theme = "noctalia"
 # Noise reduction, int 0 - 100. default 77
 # the raw visualization is very noisy, this factor adjusts the integral and gravity filters to keep the signal smooth
 # 100 will be very slow and smooth, 0 will be fast but noisy.
-noise_reduction = 50
+noise_reduction = 20
 
 
 [eq]

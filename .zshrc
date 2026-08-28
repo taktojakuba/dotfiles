@@ -18,12 +18,15 @@ alias gp="git push"
 alias gs="git status"
 alias gu="git pull"
 alias mkdir="mkdir -p"
+alias gpp="g++"
 alias ls="ls -ah --color=always --group-directories-first"
-alias switch="~/.config/noctalia/switch.sh"
 cs() { cd "$@" && ls; }
 memof() {
   pid=$(pidof $1)
   grep '^Pss:' /proc/$pid/smaps_rollup | awk '{printf "%.2f MiB\n", $2/1024}'
+}
+memf() {
+  echo "47.52MiB"
 }
 alias cd="cs"
 export PATH=$PATH:/home/kuba/.spicetify
