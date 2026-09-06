@@ -10,6 +10,7 @@ in=(
   "$dir/foot"
   "$dir/btop"
   "$dir/cava"
+  "$dir/matugen"
   "$HOME/.zshrc"
 )
 out="$HOME/dotfiles/"

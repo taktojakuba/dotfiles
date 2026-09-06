@@ -6,4 +6,4 @@ configuration {
     disable-history: true;
 }
 
-@theme "tokyonight.rasi"
+@theme "~/.config/rofi/matugen.rasi"

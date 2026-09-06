@@ -231,7 +231,7 @@ show_idle_bar_heads = 0
 waveform = a
 
 [color]
-theme = "noctalia"
+theme = "matugen"
 
 # Colors can be one of seven predefined: black, blue, cyan, green, magenta, red, white, yellow.
 # Or defined by hex code '#xxxxxx' (hex code must be within ''). User defined colors requires

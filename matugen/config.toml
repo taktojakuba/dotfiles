@@ -1,0 +1,62 @@
+[config]
+import_json_files = ["./tokyonight.json"]
+
+[templates.cava]
+input_path = '~/.config/matugen/templates/cava.ini'
+output_path = '~/.config/cava/themes/matugen'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
+[templates.vesktop]
+input_path = '~/.config/matugen/templates/vesktop.ini'
+output_path = '~/.config/vesktop/themes/matugen.css'
+
+[templates.foot]
+input_path = '~/.config/matugen/templates/foot.ini'
+output_path = '~/.config/foot/matugen.ini'
+
+[templates.dwl]
+input_path = '~/.config/matugen/templates/dwl-colors.c'
+output_path = '~/dwl/colors.c'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh {{mode}}'
+
+[templates.ironbar]
+input_path = '~/.config/matugen/templates/ironbar.css'
+output_path = '~/.config/ironbar/style.css'
+
+[templates.mako]
+input_path = '~/.config/matugen/templates/mako'
+output_path = '~/.config/mako/config'
+post_hook = 'makoctl reload'
+
+[templates.opencode]
+input_path = '~/.config/matugen/templates/opencode.json'
+output_path = '~/.config/opencode/themes/matugen.json'
+
+[templates.pywalfox]
+input_path = '~/.config/matugen/templates/pywalfox.json'
+output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox update'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi.rasi'
+output_path = '~/.config/rofi/matugen.rasi'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship.toml'
+output_path = '~/.config/starship.toml'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi.toml'
+output_path = '~/.config/yazi/matugen.toml'

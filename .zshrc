@@ -42,3 +42,5 @@ export PATH="/home/kuba/.local/bin:$PATH"
 # opencode
 alias opencode="~/.opencode/bin/opencode"
 export PATH=/home/kuba/.opencode/bin:$PATH
+
+if [ -e /home/kuba/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kuba/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

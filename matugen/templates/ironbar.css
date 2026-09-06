@@ -1,0 +1,114 @@
+@define-color nord0  {{colors.surface_dim.default.hex}}; /* base bg */
+@define-color nord1  {{colors.surface_container_high.default.hex}}; /* elevated bg / popups */
+@define-color nord2  {{colors.outline_variant.default.hex}}; /* borders */
+@define-color nord3  {{colors.on_surface_variant.default.hex}}; /* muted text / separators (comment) */
+@define-color nord4  {{colors.on_surface.default.hex}}; /* body text (fg) */
+@define-color nord5  {{colors.on_surface_variant.default.hex}}; /* fg_dark */
+@define-color nord6  {{colors.on_surface.default.hex}}; /* bright text */
+@define-color nord7  {{colors.tertiary_fixed.default.hex}}; /* green1 */
+@define-color nord8  {{colors.tertiary.default.hex}}; /* accent (focused ws, highlights) - cyan */
+@define-color nord9  {{colors.primary.default.hex}}; /* primary bar text - blue */
+@define-color nord10 {{colors.primary_container.default.hex}}; /* blue0 */
+@define-color nord11 {{colors.error.default.hex}}; /* red / urgent */
+@define-color nord12 {{colors.tertiary_container.default.hex}}; /* orange */
+@define-color nord13 {{colors.tertiary.default.hex}}; /* yellow */
+@define-color nord14 {{colors.secondary.default.hex}}; /* green */
+@define-color nord15 {{colors.secondary_container.default.hex}}; /* purple / magenta */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", monospace;
+  font-size: 13px;
+  min-height: 0;
+}
+
+.background {
+  background-color: transparent;
+}
+
+#bar {
+  background-color: @nord0;
+  color: @nord9;
+  border-radius: 0px;
+}
+
+#bar #start,
+#bar #center,
+#bar #end {
+  padding: 0;
+}
+
+.widget-container {
+  padding: 0 2px;
+}
+
+label {
+  color: @nord9;
+}
+
+.sep label,
+.sep,
+.bracket label,
+.bracket {
+  color: @nord9;
+}
+
+
+.apps {
+  color: @nord9;
+  padding: 0 5px;
+  background: none;
+  border: none;
+  transition: 0.1s;
+}
+
+.apps:hover {
+  background-color: alpha(@nord2, 0.6);
+}
+
+
+.focused {
+  color: @nord9;
+  padding: 0 4px;
+}
+
+.focused .label {
+  color: @nord9;
+}
+
+.weather {
+  color: @nord9;
+  padding: 0 4px;
+}
+
+
+.music {
+  background-color: @nord0;
+  padding: 0 4px;
+}
+
+
+.clock {
+  color: @nord9;
+  background: none;
+  border: none;
+  padding: 0 4px;
+}
+
+.popup-clock {
+  background-color: @nord1;
+  color: @nord9;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+
+.tray {
+}
+
+.tray .item {
+}
+
+.stats {
+  color: @nord9;
+  padding: 0 0px;
+}
