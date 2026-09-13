@@ -19,9 +19,9 @@ format=<b>%s</b>\n%b
 markup=1
 group-by=app-name
 
-background-color=#16161e
-text-color=#c0caf5
-border-color=#3b4261
+background-color=#212529
+text-color=#f8f9fa
+border-color=#495057
 
 [mode=do-not-disturb]
 invisible=1

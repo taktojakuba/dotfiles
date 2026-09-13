@@ -1,5 +1,4 @@
 [config]
-import_json_files = ["./tokyonight.json"]
 
 [templates.cava]
 input_path = '~/.config/matugen/templates/cava.ini'
@@ -20,6 +19,7 @@ output_path = '~/.config/foot/matugen.ini'
 [templates.dwl]
 input_path = '~/.config/matugen/templates/dwl-colors.c'
 output_path = '~/dwl/colors.c'
+post_hook = 'make -C $HOME/dwl'
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk.css'
@@ -40,9 +40,18 @@ input_path = '~/.config/matugen/templates/mako'
 output_path = '~/.config/mako/config'
 post_hook = 'makoctl reload'
 
+[templates.nvim]
+input_path = '~/.config/matugen/templates/nvim.lua'
+output_path = '~/.config/nvim/lua/matugen.lua'
+post_hook = 'pkill -USR1 nvim || true'
+
 [templates.opencode]
 input_path = '~/.config/matugen/templates/opencode.json'
 output_path = '~/.config/opencode/themes/matugen.json'
+
+[templates.qutebrowser]
+input_path = '~/.config/matugen/templates/qutebrowser.py'
+output_path = '~/.config/qutebrowser/matugen.py'
 
 [templates.pywalfox]
 input_path = '~/.config/matugen/templates/pywalfox.json'

@@ -46,16 +46,26 @@ local plugins = {
         ["<C-n>"]     = { "select_next", "fallback" },
         ["<C-b>"]     = { "scroll_documentation_up", "fallback" },
         ["<C-f>"]     = { "scroll_documentation_down", "fallback" },
-        ["<Tab>"]     = { "snippet_forward", "fallback" },
-        ["<S-Tab>"]   = { "snippet_backward", "fallback" },
+        ["<Tab>"]     = { "snippet_forward", "select_and_accept", "fallback" },
+        ["<S-Tab>"]   = { "snippet_backward", "select_prev", "fallback" },
       },
       appearance = {
         nerd_font_variant = "mono",
       },
       completion = {
+        list = {
+          selection = {
+            preselect = true,
+            auto_insert = false,
+          },
+        },
+        menu = {
+          border = "rounded",
+        },
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 200,
+          window = { border = "rounded" },
         },
         ghost_text = {
           enabled = true,
@@ -71,27 +81,23 @@ local plugins = {
       },
       signature = {
         enabled = true,
+        window = { border = "rounded" },
       },
     },
   },
   {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      { "MaximilianLloyd/ascii.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
+    },
     config = function()
+      local ascii = require("ascii")
       require("dashboard").setup({
         theme = "doom",
         config = {
-          header = {
-            "",
-            " ███╗   ██╗██╗   ██╗██╗███╗   ███╗",
-            " ████╗  ██║██║   ██║██║████╗ ████║",
-            " ██╔██╗ ██║██║   ██║██║██╔████╔██║",
-            " ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║",
-            " ██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║",
-            " ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝",
-            "",
-          },
+          header = ascii.art.text.neovim.dos_rebel,
           center = {
             { icon = " ", desc = "New File", group = "Label", key = "n", action = "ene | startinsert" },
             { icon = " ", desc = "Recent Files", group = "Label", key = "r", action = "Telescope oldfiles" },
@@ -104,6 +110,12 @@ local plugins = {
           end,
           vertical_center = true,
         },
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "dashboard",
+        callback = function()
+          vim.wo.fillchars = "eob: "
+        end,
       })
     end,
   },
@@ -151,6 +163,73 @@ local plugins = {
     },
   },
   {"m4xshen/autoclose.nvim"},
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        vue = { "prettier" },
+        svelte = { "prettier" },
+        html = { "prettier" },
+        css = { "prettier" },
+        scss = { "prettier" },
+        less = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        python = { "ruff_format" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        cuda = { "clang-format" },
+      },
+      default_format_opts = { lsp_format = "fallback" },
+      format_on_save = {
+        timeout_ms = 2000,
+        lsp_format = "fallback",
+      },
+    },
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPost", "BufWritePost", "InsertLeave" },
+    config = function()
+      require("lint").linters_by_ft = {
+        python = { "ruff" },
+      }
+      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+        callback = function()
+          require("lint").try_lint()
+        end,
+      })
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      on_attach = function(bufnr)
+        local gitsigns = require("gitsigns")
+        local map = function(mode, lhs, rhs, desc)
+          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, noremap = true, desc = "gitsigns: " .. desc })
+        end
+        map("n", "]h", gitsigns.next_hunk, "Next hunk")
+        map("n", "[h", gitsigns.prev_hunk, "Prev hunk")
+        map("n", "<leader>hd", gitsigns.diffthis, "Diff this")
+        map("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end, "Blame line")
+        map("n", "<leader>hp", gitsigns.preview_hunk_inline, "Preview hunk")
+        map("n", "<leader>hs", gitsigns.stage_hunk, "Stage hunk")
+        map("n", "<leader>hr", gitsigns.reset_hunk, "Reset hunk")
+        map("v", "<leader>hs", function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Stage hunk")
+        map("v", "<leader>hr", function() gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Reset hunk")
+      end,
+    },
+  },
 }
 
 require("lazy").setup(plugins)
@@ -213,6 +292,15 @@ require("lualine").setup({
 -- lsp config
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+vim.diagnostic.config({
+  virtual_text = { prefix = "●", spacing = 2 },
+  signs = true,
+  underline = true,
+  severity_sort = true,
+  update_in_insert = false,
+  float = { border = "rounded", source = true },
+})
+
 vim.lsp.config("*", {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
@@ -227,6 +315,13 @@ vim.lsp.config("*", {
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+    if client.supports_method("textDocument/inlayHint") then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+    vim.keymap.set("n", "<leader>ih", function()
+      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+      vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+    end, vim.tbl_extend("force", opts, { desc = "Toggle inlay hints" }))
   end,
 })
 

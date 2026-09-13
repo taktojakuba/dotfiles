@@ -16,4 +16,5 @@ in=(
 out="$HOME/dotfiles/"
 
 for item in "${in[@]}"; do cp -rv "$item" "$out"; done
-
+cp $dir/qutebrowser/config.py $out/qutebrowser 
+cp $dir/qutebrowser/matugen.py $out/qutebrowser 
