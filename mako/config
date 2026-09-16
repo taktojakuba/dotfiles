@@ -19,9 +19,9 @@ format=<b>%s</b>\n%b
 markup=1
 group-by=app-name
 
-background-color=#212529
-text-color=#f8f9fa
-border-color=#495057
+background-color=#131314
+text-color=#e5e2e2
+border-color=#43474a
 
 [mode=do-not-disturb]
 invisible=1
@@ -31,4 +31,4 @@ on-notify=none
 on-notify=none
 
 [urgency=high]
-border-color=#f7768e
+border-color=#ffb4ab
