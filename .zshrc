@@ -4,7 +4,7 @@ compinit -C
 alias vim="nvim"
 alias zed="zeditor"
 alias tmux="tmux attach || tmux new"
-alias rebuild="sudo nixos-rebuild switch"
+alias rebuild="sudo nixos-rebuild switch --flake .#nixasus"
 alias y="yazi"
 alias ga="git add ."
 alias gi="git init"

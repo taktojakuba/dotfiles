@@ -19,21 +19,24 @@ output_path = '~/.config/foot/matugen.ini'
 [templates.dwl]
 input_path = '~/.config/matugen/templates/dwl-colors.c'
 output_path = '~/dwl/colors.c'
-post_hook = 'make -C $HOME/dwl'
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-3.0/colors.css'
-post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+#post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
 
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-4.0/colors.css'
-post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh {{mode}}'
+#post_hook = '~/.config/matugen/post-hook-scripts/gtk-themes-reload.sh {{mode}}'
 
 [templates.ironbar]
 input_path = '~/.config/matugen/templates/ironbar.css'
 output_path = '~/.config/ironbar/style.css'
+
+[templates.justbar]
+input_path = '~/.config/matugen/templates/JustBar.toml'
+output_path = '~/.config/justbar/config.toml'
 
 [templates.mako]
 input_path = '~/.config/matugen/templates/mako'
@@ -68,4 +71,4 @@ output_path = '~/.config/starship.toml'
 
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi.toml'
-output_path = '~/.config/yazi/matugen.toml'
+output_path = '~/.config/yazi/theme.toml'

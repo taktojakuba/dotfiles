@@ -11,47 +11,12 @@ right = 0
 
 [[start]]
 type = "label"
-class = "sep"
-label = "["
-
-[[start]]
-type = "label"
-class = "apps"
-label = "{{2000:pgrep -x steam >/dev/null && echo Steam}}"
-on_click_left = "sh -c 'steam >/dev/null 2>&1 &'"
-
-[[start]]
-type = "label"
-class = "apps"
-label = "{{2000:pgrep -x vesktop >/dev/null && echo Vesktop}}"
-on_click_left = "sh -c 'vesktop >/dev/null 2>&1 &'"
-
-[[start]]
-type = "label"
-class = "apps"
-label = "{{2000:pgrep -x spotify >/dev/null && echo Spotify}}"
-on_click_left = "sh -c 'spotify >/dev/null 2>&1 &'"
-
-[[start]]
-type = "label"
-class = "sep"
-label = "|"
-
-[[start]]
-type = "label"
 class = "weather"
-label = "[ weather: {{1800000:curl -s wttr.in/?format=%C}} ]"
-
-[[start]]
-type = "music"
-class = "music"
-player_type = "mpris"
-format = "{title}"
-show_status_icon = false
+label = "[ weather: {{1800000:curl -s wttr.in/?format=%C}}"
 
 [[start]]
 type = "label"
-class = "sep"
+class = "bracket"
 label = "]"
 
 [start.truncate]
