@@ -25,7 +25,7 @@ alias cd="cs"
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 setopt CORRECT
-jf ~/JustFetch/art.csv
+jf
 if [ -e /home/kuba/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kuba/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # opencode

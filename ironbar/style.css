@@ -1,19 +1,19 @@
-@define-color nord0  #141312; /* base bg */
-@define-color nord1  #2b2a29; /* elevated bg / popups */
-@define-color nord2  #49473f; /* borders */
-@define-color nord3  #cbc6bc; /* muted text / separators (comment) */
-@define-color nord4  #e6e2df; /* body text (fg) */
-@define-color nord5  #cbc6bc; /* fg_dark */
-@define-color nord6  #e6e2df; /* bright text */
-@define-color nord7  #e6e1e9; /* green1 */
-@define-color nord8  #cac5cd; /* accent (focused ws, highlights) - cyan */
-@define-color nord9  #cbc6b8; /* primary bar text - blue */
-@define-color nord10 #2c2a20; /* blue0 */
+@define-color nord0  #141314; /* base bg */
+@define-color nord1  #2b292a; /* elevated bg / popups */
+@define-color nord2  #4a454a; /* borders */
+@define-color nord3  #cdc4ca; /* muted text / separators (comment) */
+@define-color nord4  #e6e1e2; /* body text (fg) */
+@define-color nord5  #cdc4ca; /* fg_dark */
+@define-color nord6  #e6e1e2; /* bright text */
+@define-color nord7  #e3e4d3; /* green1 */
+@define-color nord8  #c7c8b7; /* accent (focused ws, highlights) - cyan */
+@define-color nord9  #cfc3cd; /* primary bar text - blue */
+@define-color nord10 #120c13; /* blue0 */
 @define-color nord11 #ffb4ab; /* red / urgent */
-@define-color nord12 #2b292f; /* orange */
-@define-color nord13 #cac5cd; /* yellow */
-@define-color nord14 #cac6bf; /* green */
-@define-color nord15 #494741; /* purple / magenta */
+@define-color nord12 #0d0f06; /* orange */
+@define-color nord13 #c7c8b7; /* yellow */
+@define-color nord14 #ccc4c9; /* green */
+@define-color nord15 #4a4549; /* purple / magenta */
 
 * {
   font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", monospace;

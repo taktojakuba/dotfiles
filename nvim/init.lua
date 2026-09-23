@@ -22,7 +22,7 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
-    opts = { ensure_installed = { "lua", "javascript" } },
+    opts = { ensure_installed = { "lua", "javascript", "nix" } },
   },
   { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
@@ -159,7 +159,7 @@ local plugins = {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     dependencies = { "mason-org/mason.nvim" },
     opts = {
-      ensure_installed = { "stylua", "prettier", "ruff", "clang-format" },
+      ensure_installed = { "stylua", "prettier", "ruff", "clang-format", "nixfmt" },
     },
   },
   {"m4xshen/autoclose.nvim"},
@@ -187,6 +187,7 @@ local plugins = {
         c = { "clang-format" },
         cpp = { "clang-format" },
         cuda = { "clang-format" },
+        nix = { "nixfmt" },
       },
       default_format_opts = { lsp_format = "fallback" },
       format_on_save = {
@@ -327,7 +328,7 @@ vim.lsp.config("*", {
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls" },
+  ensure_installed = { "lua_ls", "nixd" },
 })
 
 -- key bindings
