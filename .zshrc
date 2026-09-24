@@ -4,7 +4,7 @@ compinit -C
 alias vim="nvim"
 alias zed="zeditor"
 alias tmux="tmux attach || tmux new"
-alias rebuild="sudo nixos-rebuild switch --flake .#nixasus"
+alias rebuild="sudo nixos-rebuild switch --flake .#nixasus --impure"
 alias y="yazi"
 alias ga="git add ."
 alias gi="git init"
@@ -25,7 +25,7 @@ alias cd="cs"
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 setopt CORRECT
-jf
+jf ~/JustFetch/art.csv
 if [ -e /home/kuba/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kuba/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # opencode
