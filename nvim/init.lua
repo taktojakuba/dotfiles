@@ -1,0 +1,351 @@
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.clipboard:append("unnamedplus")
+vim.opt.cmdheight = 0
+vim.opt.number = true
+vim.g.mapleader = " "
+
+-- lazy nvim plugin manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+end
+vim.opt.rtp:prepend(lazypath)
+
+local plugins = {
+  { "RRethy/nvim-base16", priority = 1000 },
+  { "nvim-telescope/telescope.nvim", version = "0.2.2", dependencies = { "nvim-lua/plenary.nvim" } },
+  { "nvim-telescope/telescope-ui-select.nvim" },
+  { "nvim-telescope/telescope-project.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = { ensure_installed = { "lua", "javascript" } },
+  },
+  { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
+  { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+  { "mason-org/mason.nvim" },
+  { "mason-org/mason-lspconfig.nvim", dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" } },
+  { "neovim/nvim-lspconfig" },
+  {
+    "saghen/blink.cmp",
+    version = "1.*",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    ---@module "blink.cmp"
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = {
+        preset = "none",
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"]     = { "hide" },
+        ["<C-y>"]     = { "select_and_accept" },
+        ["<CR>"]      = { "select_and_accept", "fallback" },
+        ["<C-p>"]     = { "select_prev", "fallback" },
+        ["<C-n>"]     = { "select_next", "fallback" },
+        ["<C-b>"]     = { "scroll_documentation_up", "fallback" },
+        ["<C-f>"]     = { "scroll_documentation_down", "fallback" },
+        ["<Tab>"]     = { "snippet_forward", "select_and_accept", "fallback" },
+        ["<S-Tab>"]   = { "snippet_backward", "select_prev", "fallback" },
+      },
+      appearance = {
+        nerd_font_variant = "mono",
+      },
+      completion = {
+        list = {
+          selection = {
+            preselect = true,
+            auto_insert = false,
+          },
+        },
+        menu = {
+          border = "rounded",
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+          window = { border = "rounded" },
+        },
+        ghost_text = {
+          enabled = true,
+        },
+        accept = {
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+      signature = {
+        enabled = true,
+        window = { border = "rounded" },
+      },
+    },
+  },
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      { "MaximilianLloyd/ascii.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
+    },
+    config = function()
+      local ascii = require("ascii")
+      require("dashboard").setup({
+        theme = "doom",
+        config = {
+          header = ascii.art.text.neovim.dos_rebel,
+          center = {
+            { icon = " ", desc = "New File", group = "Label", key = "n", action = "ene | startinsert" },
+            { icon = " ", desc = "Recent Files", group = "Label", key = "r", action = "Telescope oldfiles" },
+            { icon = " ", desc = "Open Project", group = "Label", key = "p", action = "Telescope project" },
+          },
+          footer = function()
+            local stats = require("lazy").stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            return { "loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+          end,
+          vertical_center = true,
+        },
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "dashboard",
+        callback = function()
+          vim.wo.fillchars = "eob: "
+        end,
+      })
+    end,
+  },
+  {
+    "sphamba/smear-cursor.nvim",
+    opts = {
+      cursor_color = nil,
+      smear_between_buffers = true,
+      smear_between_windows = true,
+      smear_insert_mode = true,
+      smear_terminal_mode = true,
+      legacy_computing_symmetry_mode = false,
+      distance_scayle_method = "linear",
+      stiffness = 0.8,
+      trailing_stiffness = 0.5,
+      trailing_exponent = 0.1,
+      ghost_exponent = 0.1,
+      never_update_overlapping = false,
+      max_kept_history = 0,
+      filetypes_disabled = {},
+      hide_target_hack = true,
+      gamma = 1,
+    },
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "VeryLazy",
+    opts = {
+      duration_multiplier = 1,
+      easing = "linear",
+      hide_cursor = true,
+      cursor_scrolls_alone = true,
+      performance_mode = false,
+      ignored_filetypes = {},
+      ignored_buftypes = {},
+      mappings = { "<C-u>", "<C-d>", "<C-y>", "<C-e>", "zt", "zz", "zb", "G", "gg" },
+    },
+  },
+  { "vyfor/cord.nvim", opts = { display = { theme = "classic", flavor = "accent" } } },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "mason-org/mason.nvim" },
+    opts = {
+      ensure_installed = { "stylua", "prettier", "ruff", "clang-format" },
+    },
+  },
+  {"m4xshen/autoclose.nvim"},
+  {
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        vue = { "prettier" },
+        svelte = { "prettier" },
+        html = { "prettier" },
+        css = { "prettier" },
+        scss = { "prettier" },
+        less = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        python = { "ruff_format" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        cuda = { "clang-format" },
+      },
+      default_format_opts = { lsp_format = "fallback" },
+      format_on_save = {
+        timeout_ms = 2000,
+        lsp_format = "fallback",
+      },
+    },
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPost", "BufWritePost", "InsertLeave" },
+    config = function()
+      require("lint").linters_by_ft = {
+        python = { "ruff" },
+      }
+      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+        callback = function()
+          require("lint").try_lint()
+        end,
+      })
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      on_attach = function(bufnr)
+        local gitsigns = require("gitsigns")
+        local map = function(mode, lhs, rhs, desc)
+          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, noremap = true, desc = "gitsigns: " .. desc })
+        end
+        map("n", "]h", gitsigns.next_hunk, "Next hunk")
+        map("n", "[h", gitsigns.prev_hunk, "Prev hunk")
+        map("n", "<leader>hd", gitsigns.diffthis, "Diff this")
+        map("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end, "Blame line")
+        map("n", "<leader>hp", gitsigns.preview_hunk_inline, "Preview hunk")
+        map("n", "<leader>hs", gitsigns.stage_hunk, "Stage hunk")
+        map("n", "<leader>hr", gitsigns.reset_hunk, "Reset hunk")
+        map("v", "<leader>hs", function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Stage hunk")
+        map("v", "<leader>hr", function() gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, "Reset hunk")
+      end,
+    },
+  },
+}
+
+require("lazy").setup(plugins)
+require("matugen").setup()
+
+require("autoclose").setup()
+
+-- autoclose HTML/XML tags like <div> -> <div></div>
+local html_filetypes = {
+  html = true, htm = true, xhtml = true, xml = true,
+  jsx = true, tsx = true, vue = true, svelte = true,
+  mdx = true, markdown = true, eruby = true, ejs = true,
+  php = true, liquid = true, astro = true,
+}
+
+local html_void_elements = {
+  area = true, base = true, br = true, col = true, embed = true,
+  hr = true, img = true, input = true, link = true, meta = true,
+  param = true, source = true, track = true, wbr = true,
+}
+
+local function html_auto_close()
+  if not html_filetypes[vim.bo.filetype] then
+    return ">"
+  end
+
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+
+  if line:sub(col + 1, col + 1) == ">" then
+    return "<C-G>U<Right>"
+  end
+
+  local before = line:sub(1, col)
+  local open = before:find("<[^<>]*$")
+  if not open then
+    return ">"
+  end
+
+  local tagname = before:sub(open + 1):match("^([a-zA-Z][%w%-]*)")
+  if tagname and not html_void_elements[tagname:lower()] then
+    return "></" .. tagname .. ">"
+  end
+  return ">"
+end
+
+vim.keymap.set("i", ">", html_auto_close, { noremap = true, expr = true, desc = "autoclose html tag" })
+
+local builtin = require("telescope.builtin")
+
+require("telescope").load_extension("ui-select")
+require("telescope").load_extension("project")
+
+require("nvim-tree").setup()
+
+require("lualine").setup({
+  options = { theme = "auto" },
+})
+
+-- lsp config
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+vim.diagnostic.config({
+  virtual_text = { prefix = "●", spacing = 2 },
+  signs = true,
+  underline = true,
+  severity_sort = true,
+  update_in_insert = false,
+  float = { border = "rounded", source = true },
+})
+
+vim.lsp.config("*", {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    local opts = { buffer = bufnr, silent = true }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "F", vim.lsp.buf.format, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+    if client.supports_method("textDocument/inlayHint") then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+    vim.keymap.set("n", "<leader>ih", function()
+      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+      vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+    end, vim.tbl_extend("force", opts, { desc = "Toggle inlay hints" }))
+  end,
+})
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "lua_ls" },
+})
+
+-- key bindings
+vim.keymap.set("n", "<C-f>", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<C-g>", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<cr>", { noremap = true })
+vim.keymap.set("n", "<C-a>", "ggVG", { noremap = true })
+vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>cd", function() vim.fn.setcwd(vim.fn.expand("%:p:h")) end, { desc = "cd to current file's dir" })
+vim.keymap.set("n", "<C-b>", "<cmd>NvimTreeFocus<cr>", { noremap = true })
+
+-- neoscroll keybinds
+local neoscroll = require("neoscroll")
+vim.keymap.set("n", "<C-Up>", function() neoscroll.scroll(-0.5, { duration = 200 }) end, { silent = true })
+vim.keymap.set("n", "<C-Down>", function() neoscroll.scroll(0.5, { duration = 200 }) end, { silent = true })
+vim.keymap.set("i", "<C-Up>", function() neoscroll.scroll(-0.5, { duration = 200, move_cursor = false }) end, { silent = true })
+vim.keymap.set("i", "<C-Down>", function() neoscroll.scroll(0.5, { duration = 200, move_cursor = false }) end, { silent = true })
+vim.keymap.set("v", "<C-Up>", function() neoscroll.scroll(-0.5, { duration = 200 }) end, { silent = true })
+vim.keymap.set("v", "<C-Down>", function() neoscroll.scroll(0.5, { duration = 200 }) end, { silent = true })
