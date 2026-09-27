@@ -1,0 +1,51 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #181818;
+  color: #ececec;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 6rem;
+  gap: 2.5rem;
+}
+
+.prompt {
+  font-size: 2rem;
+  color: #b3b3b3;
+}
+
+.arrow {
+  color: #b3b3b3;
+}
+
+
+.columns {
+  display: flex;
+  gap: 4.5rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.column h2 {
+  color: #ececec;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.column a {
+  color: #ececec;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+.column a:hover {
+  color: #ececec;
+}
