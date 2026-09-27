@@ -11,6 +11,7 @@ in=(
   "$dir/btop"
   "$dir/cava"
   "$dir/matugen"
+  "$dir/qutebrowser"
   "$HOME/.zshrc"
 )
 out="$HOME/dotfiles/"
