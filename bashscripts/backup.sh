@@ -1,5 +1,5 @@
 #!/bin/bash
-dir="$HOME/.config/"
+dir="$HOME/.config"
 in=(
   "$dir/yazi"
   "$dir/nvim"

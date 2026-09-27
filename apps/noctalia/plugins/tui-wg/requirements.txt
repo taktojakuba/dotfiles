@@ -1,4 +1,0 @@
-powerprofilesdaemon
-upower
-pipewire
-wlan
